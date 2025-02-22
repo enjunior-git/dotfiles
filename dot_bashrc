@@ -23,7 +23,7 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 # source /home/junior/dev/alacritty/extra/completions/alacritty.bash
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
