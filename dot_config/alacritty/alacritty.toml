@@ -9,7 +9,7 @@ TERM = "xterm-256color"
 padding.x = 12
 padding.y = 12
 
-decorations = "none"
+# decorations = "none"
 
 startup_mode = "maximized"
 
