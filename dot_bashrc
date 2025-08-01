@@ -1,5 +1,11 @@
 alias k=kubectl
+alias ls='eza --color=always --icons=always --time-style=long-iso --long --git --all --group-directories-first --no-user'
+
+alias tn='tmux new-session -s'
+alias ts='tmux list-sessions'
+alias ta='tmux attach-session'
 
 export XDG_CURRENT_DESKTOP=Hyprland
 
 eval "$(starship init bash)"
+eval "$(zoxide init --cmd cd bash)"
