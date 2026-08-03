@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Description: Link dotfiles to home directory
+# Description: Link dotfiles to home directory with Chezmoi
 
-mkdir -p ~/.config
+set -euo pipefail
 
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
+if ! command -v chezmoi >/dev/null; then
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:enjunior-git/dotfiles.git 
+fi
 
-echo "Dotfiles linked!"
+exit 0
