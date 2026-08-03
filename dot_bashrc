@@ -9,9 +9,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
-# Vite+ bin (https://viteplus.dev)
-. "$HOME/.vite-plus/env"
-
 # pnpm
 export PNPM_HOME="/home/junior/.local/share/pnpm"
 case ":$PATH:" in
@@ -19,8 +16,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-alias k='kubectl'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -33,9 +28,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source <(kubectl completion bash)
-
-complete -o default -F __start_kubectl k
+if command -v kubectl >/dev/null 2>&1; then
+    source <(kubectl completion bash)
+    alias k=kubectl
+    complete -o default -F __start_kubectl k
+fi
 
 EDITOR=vim
 TERM=xterm-256color
