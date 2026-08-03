@@ -4,11 +4,8 @@
 
 set -euo pipefail
 
-mkdir -p ~/.ssh
-ssh-keyscan github.com >> ~/.ssh/known_hosts
-
 if ! command -v chezmoi >/dev/null; then
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:enjunior-git/dotfiles.git 
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/enjunior-git/dotfiles.git
 fi
 
 curl -sS https://starship.rs/install.sh | sh
