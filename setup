@@ -5,7 +5,7 @@
 set -euo pipefail
 
 if ! command -v chezmoi >/dev/null; then
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:enjunior-git/dotfiles.git
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/enjunior-git/dotfiles.git
 fi
 
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
