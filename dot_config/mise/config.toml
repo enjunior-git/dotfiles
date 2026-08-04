@@ -1,3 +1,9 @@
 [tools]
 bat = "latest"
 chezmoi = "latest"
+ripgrep="latest"
+lsd="latest"
+fzf="latest"
+usage="latest"
+lazygit="latest"
+neovim="0.10.4"
