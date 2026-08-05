@@ -1,6 +1,7 @@
 [tools]
 bat = "latest"
 chezmoi = "latest"
+fastfetch = "latest"
 ripgrep="latest"
 lsd="latest"
 fzf="latest"
