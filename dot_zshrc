@@ -25,6 +25,8 @@ prompt pure
 bindkey -v
 export KEYTIMEOUT=1 # make switching between modes faster
 
+# run fastfetch in interactive shells
+[[ -o interactive ]] && command -v fastfetch >/dev/null && fastfetch
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
