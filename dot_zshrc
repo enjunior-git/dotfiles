@@ -36,7 +36,6 @@ fi
 
 export LANG="en_US.UTF-8"
 
-
 # ~~~~~~~~~~~~~~~ Mise ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -83,4 +82,5 @@ if command -v lsd > /dev/null ; then
   alias lt='ls --tree'
 fi
 
-export LANG="en_CA.UTF-8"
+alias ds="devsy workspace ssh"
+alias dup="devsy workspace up ."
