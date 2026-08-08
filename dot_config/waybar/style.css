@@ -1,0 +1,212 @@
+@define-color base #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlight_low rgba(38, 35, 58, 0.88);
+@define-color shadow rgba(0, 0, 0, 0.28);
+
+* {
+    font-family: "Hack Nerd Font", FontAwesome, monospace;
+    font-size: 11px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+window#waybar.hidden {
+    opacity: 0.15;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 4px 8px;
+}
+
+#workspaces,
+#window,
+#battery,
+#clock,
+#mode,
+#tray,
+#network,
+#pulseaudio,
+#wireplumber,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#disk,
+#custom-media,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd,
+#language,
+#keyboard-state,
+#privacy-item {
+    margin: 0 6px;
+    padding: 3px 10px;
+    background: @highlight_low;
+    color: @text;
+    border: 1px solid rgba(144, 140, 170, 0.22);
+    border-radius: 999px;
+    box-shadow: 0 10px 24px -18px @shadow;
+}
+
+#window {
+    padding-left: 12px;
+    padding-right: 12px;
+    background: linear-gradient(90deg, rgba(49, 116, 143, 0.86), rgba(38, 35, 58, 0.92));
+    color: #f4f1ff;
+}
+
+#workspaces {
+    padding: 2px;
+    background: rgba(31, 29, 46, 0.92);
+}
+
+#workspaces button {
+    min-width: 24px;
+    padding: 3px 7px;
+    color: @subtle;
+    background: transparent;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: rgba(196, 167, 231, 0.16);
+    box-shadow: inherit;
+}
+
+#workspaces button.active {
+    color: @base;
+    background: linear-gradient(135deg, @iris, @rose);
+}
+
+#workspaces button.urgent {
+    color: #fff6f7;
+    background: @love;
+}
+
+#mode {
+    background: rgba(235, 111, 146, 0.18);
+    color: @rose;
+    border-color: rgba(235, 111, 146, 0.28);
+}
+
+#clock {
+    background: linear-gradient(90deg, rgba(196, 167, 231, 0.9), rgba(144, 140, 170, 0.72));
+    color: @base;
+    font-weight: 700;
+}
+
+#battery {
+    background: rgba(49, 116, 143, 0.2);
+    color: @foam;
+    border-color: rgba(156, 207, 216, 0.3);
+}
+
+#battery.charging,
+#battery.plugged {
+    background: rgba(156, 207, 216, 0.18);
+    color: @foam;
+}
+
+@keyframes blink {
+    to {
+        background: rgba(235, 111, 146, 0.24);
+        color: #fff4f6;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: rgba(235, 111, 146, 0.18);
+    color: @love;
+    border-color: rgba(235, 111, 146, 0.34);
+    animation-name: blink;
+    animation-duration: 0.7s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network,
+#tray {
+    color: @foam;
+}
+
+#network.disconnected,
+#mpd.disconnected,
+#temperature.critical,
+#power-profiles-daemon.performance,
+#tray > .needs-attention,
+#privacy-item.screenshare {
+    color: @love;
+}
+
+#pulseaudio,
+#wireplumber {
+    color: @gold;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#mpd.stopped {
+    color: @muted;
+}
+
+#power-profiles-daemon.balanced,
+#mpd.paused,
+#idle_inhibitor.activated {
+    color: @foam;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #b8e6c1;
+}
+
+#language {
+    color: @gold;
+}
+
+#keyboard-state > label {
+    padding: 0 4px;
+    border-radius: 999px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(196, 167, 231, 0.16);
+    color: @rose;
+}
+
+#scratchpad.empty {
+    opacity: 0.55;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+label:focus {
+    background: transparent;
+}

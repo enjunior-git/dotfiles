@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+set -eu
+
+STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}/hypr-notify"
+mkdir -p "$STATE_DIR"
+
+state_file() {
+	printf '%s/%s.id\n' "$STATE_DIR" "$1"
+}
+
+send_notification() {
+	app_name=$1
+	icon=$2
+	summary=$3
+	body=$4
+	value=${5:-}
+	state_key=${6:-$app_name}
+	id_file=$(state_file "$state_key")
+	replace_id=0
+
+	if [ -f "$id_file" ]; then
+		replace_id=$(cat "$id_file")
+	fi
+
+	if command -v notify-send >/dev/null 2>&1; then
+		notify_id=""
+		if [ -n "$value" ]; then
+			notify_id=$(notify-send \
+				-a "$app_name" \
+				-p \
+				-r "$replace_id" \
+				-h "string:x-canonical-private-synchronous:$app_name" \
+				-h "int:value:$value" \
+				-u low \
+				-i "$icon" \
+				"$summary" "$body")
+		else
+			notify_id=$(notify-send \
+				-a "$app_name" \
+				-p \
+				-r "$replace_id" \
+				-h "string:x-canonical-private-synchronous:$app_name" \
+				-u low \
+				-i "$icon" \
+				"$summary" "$body")
+		fi
+
+		if [ -n "$notify_id" ]; then
+			printf '%s\n' "$notify_id" > "$id_file"
+		fi
+		return
+	fi
+
+	if command -v gdbus >/dev/null 2>&1; then
+		hints="{}"
+		if [ -n "$value" ]; then
+			hints="{'value': <int32 $value>}"
+		fi
+		response=$(gdbus call --session \
+			--dest org.freedesktop.Notifications \
+			--object-path /org/freedesktop/Notifications \
+			--method org.freedesktop.Notifications.Notify \
+			"$app_name" \
+			"$replace_id" \
+			"$icon" \
+			"$summary" \
+			"$body" \
+			[] \
+			"$hints" \
+			2000)
+		new_id=$(printf '%s\n' "$response" | sed -nE "s/^\(uint32 ([0-9]+),\)$/\1/p")
+		if [ -n "$new_id" ]; then
+			printf '%s\n' "$new_id" > "$id_file"
+		fi
+	fi
+}
+
+get_backlight() {
+	brightnessctl -m | awk -F, '{gsub("%", "", $4); print $4}'
+}
+
+get_icon() {
+	current="$(get_backlight)"
+	if [ "$current" -le 25 ]; then
+		echo "display-brightness-low"
+	elif [ "$current" -le 60 ]; then
+		echo "display-brightness-medium"
+	else
+		echo "display-brightness-high"
+	fi
+}
+
+notify_user() {
+	send_notification "brightness" "$(get_icon)" "Brightness" "$(get_backlight)%" "$(get_backlight)"
+}
+
+inc_backlight() {
+	brightnessctl -e4 -n2 set 5%+ && notify_user
+}
+
+dec_backlight() {
+	brightnessctl -e4 -n2 set 5%- && notify_user
+}
+
+if [[ "$1" == "--get" ]]; then
+	get_backlight
+elif [[ "$1" == "--inc" ]]; then
+	inc_backlight
+elif [[ "$1" == "--dec" ]]; then
+	dec_backlight
+else
+	get_backlight
+fi
