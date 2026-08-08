@@ -78,11 +78,11 @@ __ensure_ssh_agent() {
   fi
 
   __ssh_add_default_key
-  unset -f __ssh_agent_available __ssh_add_default_key
+  unfunction __ssh_agent_available __ssh_add_default_key 2>/dev/null
 }
 
 __ensure_ssh_agent
-unset -f __ensure_ssh_agent __ssh_agent_available __ssh_add_default_key
+unfunction __ensure_ssh_agent __ssh_agent_available __ssh_add_default_key 2>/dev/null
 
 # ~~~~~~~~~~~~~~~ Mise ~~~~~~~~~~~~~~~~~~~~~~~~
 
