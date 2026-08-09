@@ -282,7 +282,7 @@ hl.bind(mainMod .. " + j",  hl.dsp.focus({ direction = "down" }))
 
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle"}))
 
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + END", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || sh -lc 'loginctl terminate-session \"$(loginctl show-user \"$USER\" -p Display --value)\"'"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("nwg-bar"))
