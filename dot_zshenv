@@ -4,3 +4,4 @@ path=(
 )
 
 export PATH
+export DEVSY_DISABLE_TELEMETRY="true"

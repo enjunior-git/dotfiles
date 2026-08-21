@@ -108,6 +108,12 @@ if command -v mise > /dev/null ; then
   source <(mise completion zsh)
 fi
 
+alias k=kubectl
+if command -v kubectl > /dev/null ; then
+  source <(kubectl completion zsh)
+  compdef k=kubectl
+fi
+
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 

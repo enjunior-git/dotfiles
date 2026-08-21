@@ -18,7 +18,12 @@
     // "font",
     // "cursor",
     "terminal",
-    "terminalfont",
+    {
+      "type": "command",
+      "key": "Terminal Font",
+      "text": "sed -n 's/^font_family[[:space:]]\\+//p; s/^font_size[[:space:]]\\+//p' ~/.config/kitty/kitty.conf | paste -sd ' ' -",
+      "format": "{}"
+    },
     "cpu",
     "gpu",
     "memory",

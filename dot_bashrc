@@ -82,6 +82,8 @@ fi
 EDITOR=vim
 TERM=xterm-256color
 
+export DEVSY_DISABLE_TELEMETRY="true"
+
 eval "$(starship init bash)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
