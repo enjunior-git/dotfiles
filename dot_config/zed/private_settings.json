@@ -80,7 +80,7 @@
   },
   "terminal": {
     "shell": {
-      "program": "fish",
+      "program": "zsh",
     },
   },
   "telemetry": {
