@@ -280,8 +280,8 @@ _launch=none
 [services][kitty.desktop]
 _launch=Meta+T
 
-[services][librewolf.desktop]
-_launch=Meta+B
+[services][obsidian.desktop]
+_launch=Meta+O
 
 [services][org.kde.konsole.desktop]
 _launch=none
@@ -289,3 +289,6 @@ _launch=none
 [services][org.kde.spectacle.desktop]
 CurrentMonitorScreenShot=none
 OpenWithoutScreenshot=none
+
+[services][vivaldi-stable.desktop]
+_launch=Meta+B
