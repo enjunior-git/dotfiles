@@ -1,0 +1,143 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": false,
+  "vim": {
+    "default_mode": "normal",
+    "use_smartcase_find": true,
+  },
+  "file_scan_exclusions": [
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+  ],
+  "auto_update": false,
+  "edit_predictions": {
+    "allow_data_collection": "no",
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "hide_hidden": false,
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "restore_on_startup": "launchpad",
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+  },
+  "minimap": {
+    "show": "always",
+  },
+  "toolbar": {
+    "agent_review": true,
+    "code_actions": true,
+  },
+  "disable_ai": false,
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+  },
+  "terminal": {
+    "shell": {
+      "program": "fish",
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "VSCode Icons for Zed (Dark NestJS)",
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "buffer_font_features": {
+    "calt": false, // Disable ligatures
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha",
+  },
+  "experimental.theme_overrides": {
+    "background.appearance": "opaque",
+
+    "background": "#1e1e2e",
+    "panel.background": "#18182540",
+    "editor.background": "#1e1e2e30",
+    "terminal.background": "#1e1e2e30",
+    "toolbar.background": "#18182540",
+
+    "tab_bar.background": "#11111b40",
+    "tab.inactive_background": "#0b0b1120",
+    "tab.active_background": "#31324460",
+
+    "status_bar.background": "#11111bcc",
+    "title_bar.background": "#11111bcc",
+
+    "border": "#00000000",
+    "border.variant": "#00000000",
+
+    "scrollbar.track.background": "#31324420",
+    "scrollbar.thumb.background": "#585b7040",
+
+    "editor.gutter.background": "#00000000",
+    "editor.active_line.background": "#cdd6f412",
+
+    "editor.line_number": "#7f849c70",
+    "editor.active_line_number": "#cdd6f4cc",
+
+    "editor.indent_guide": "#31324440",
+    "editor.indent_guide_active": "#585b7070",
+
+    "surface.background": "#cdd6f408",
+    "elevated_surface.background": "#2c2f46ee",
+  },
+}
