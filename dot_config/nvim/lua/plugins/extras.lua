@@ -1,4 +1,5 @@
 return {
+  { import = "lazyvim.plugins.extras.editor.navic" },
   { import = "lazyvim.plugins.extras.lang.astro" },
   { import = "lazyvim.plugins.extras.lang.markdown" },
   { import = "lazyvim.plugins.extras.lang.python" },
