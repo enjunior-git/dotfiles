@@ -6,3 +6,5 @@ vim.opt.ignorecase = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.scrolloff = 8
+vim.opt.wrap = true
+vim.opt.textwidth = 120
